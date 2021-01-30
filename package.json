@@ -1,0 +1,8 @@
+{
+  "name": "@platzily",
+  "workspaces": ["packages/*"],
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
