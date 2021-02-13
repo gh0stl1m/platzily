@@ -5,13 +5,12 @@
   "keywords": [],
   "author": "Santiago Sanchez Taborda <santiago.sanchez.t@gmail.com>",
   "license": "ISC",
-  "main": "lib/mongodb-connection-module.js",
+  "main": "src/index.js",
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+    "src": "src"
   },
   "files": [
-    "lib"
+    "src"
   ],
   "publishConfig": {
     "access": "public"
@@ -26,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/gh0stl1m/platzily/issues"
   },
-  "homepage": "https://github.com/gh0stl1m/platzily#readme"
+  "homepage": "https://github.com/gh0stl1m/platzily#readme",
+  "dependencies": {
+    "mongoose": "^5.11.16"
+  }
 }
