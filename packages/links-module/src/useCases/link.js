@@ -7,7 +7,6 @@ const {
 
 const createShortURL = ({ model, idGenerator }) => async (originalUrl, fullHostnameURL) => {
   if (!validators.isValidURL(originalUrl) || !validators.isValidURL(fullHostnameURL)) {
-    console.log('URLS: ', { originalUrl, fullHostnameURL })
     logger.error('[pl-link-module]: The URL provided is not valid');
 
     throw new BusinessError(errorTypes.URL_NOT_VALID, 'link-module');
