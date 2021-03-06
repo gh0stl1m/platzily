@@ -10,7 +10,7 @@
     "standard": "^16.0.3"
   },
   "dependencies": {
-    "winston": "^3.3.3",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "winston": "^3.3.3"
   }
 }
