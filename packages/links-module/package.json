@@ -29,7 +29,8 @@
   "homepage": "https://github.com/gh0stl1m/platzily#readme",
   "dependencies": {
     "@platzily/mongodb-connection-module": "^1.0.0",
-    "mongoose": "^5.11.17"
+    "mongoose": "^5.11.17",
+    "nanoid": "^3.1.20"
   },
   "devDependencies": {
     "faker": "^5.4.0"
