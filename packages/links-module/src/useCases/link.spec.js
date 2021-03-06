@@ -47,6 +47,44 @@ describe('Link Use Cases', () => {
       await expect(shortUrlBuilder(invalidURL, hostnameUrl)).rejects.toThrow();
       expect(dependencies.model.create).not.toHaveBeenCalled();
       expect(dependencies.idGenerator.generate).not.toHaveBeenCalled();
-    })
+    });
   });
-})
+
+  describe('readUrlByhash', () => {
+    it('Given a valid hash, then the fuction must return a promise that resolves an URL', async () => {
+      // Arrange
+      const hash = Faker.random.alpha();
+      const linkObject = {
+        _id: Faker.random.uuid(),
+        hash,
+      };
+
+      const dependencies = {
+        model: {
+          findOne: jest.fn(() => Promise.resolve(linkObject))
+        }
+      }
+
+      // Act
+      const linkReader = linkUseCases.readUrlByHash(dependencies);
+      const linkData = await linkReader(hash, { _id: 1, hash: 1 });
+
+      // Asserts
+      expect(linkData).toEqual(linkObject);
+      expect(dependencies.model.findOne).toHaveBeenCalled();
+    });
+
+    it('Given an invalid hash, then the fuction must throw an error', async () => {
+      // Arrange
+      const dependencies = {
+        model: { findOne: jest.fn() },
+      }; 
+
+      // Act
+      const readerLink = linkUseCases.readUrlByHash(dependencies);
+
+      // Asserts
+      await expect(readerLink()).rejects.toThrow();
+    });
+  });
+});

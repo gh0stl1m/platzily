@@ -2,6 +2,7 @@ const {
   logger,
   BusinessError,
   validators,
+  sanitizers: { errorFieldParser },
   constants: { errorTypes },
 } = require('../utils');
 
@@ -28,5 +29,16 @@ const createShortURL = ({ model, idGenerator }) => async (originalUrl, fullHostn
   return `${fullHostnameURL}/${shortURL.hash}`;
 };
 
-module.exports = { createShortURL };
+const readUrlByHash = ({ model }) => async (hash, fieldsSelector = { _id: 1 }) => {
+  if (!hash) {
+    logger.error('[pl-link-module]: Error the hash parameter is required');
+    throw new BusinessError(errorFieldParser('hash'), 'link-module');
+  }
+
+  logger.info('[pl-link-module]: Reading URL by hash');
+
+  return model.findOne({ hash }, fieldsSelector);
+}
+
+module.exports = { createShortURL, readUrlByHash };
 
