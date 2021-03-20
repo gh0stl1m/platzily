@@ -4,9 +4,7 @@ const path = require('path');
 async function start() {
   const fastify = Fastify({ logger: true });
 
-  fastify.register(require('./routes/healthychecks'));
-  fastify.register(require('./routes/link'));
-
+  fastify.register(autoload, { dir: path.join(__dirname, 'routes') });
   fastify.register(autoload, { dir: path.join(process.env.PWD, 'src/plugins')});
 
   try {
