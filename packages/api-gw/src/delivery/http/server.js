@@ -7,6 +7,8 @@ async function start() {
   fastify.register(autoload, { dir: path.join(__dirname, 'routes') });
   fastify.register(autoload, { dir: path.join(process.env.PWD, 'src/plugins')});
 
+  fastify.register(autoload, { dir: path.join(process.env.PWD, 'src/plugins')});
+
   try {
     await fastify.listen(process.env.SERVER_PORT || 3000, '0.0.0.0');
   } catch(err) {
