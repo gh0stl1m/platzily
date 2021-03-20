@@ -1,10 +1,13 @@
 const Fastify = require('fastify');
-
+const autoload = require('fastify-autoload');
+const path = require('path');
 async function start() {
   const fastify = Fastify({ logger: true });
 
   fastify.register(require('./routes/healthychecks'));
   fastify.register(require('./routes/link'));
+
+  fastify.register(autoload, { dir: path.join(process.env.PWD, 'src/plugins')});
 
   try {
     await fastify.listen(process.env.SERVER_PORT || 3000);

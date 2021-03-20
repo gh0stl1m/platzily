@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "start:dev": "nodemon src/index.js"
+    "start:dev": "nodemon src/index.js",
+    "inspect": "node --inspect src/index.js"
   },
   "bugs": {
     "url": "https://github.com/gh0stl1m/platzily/issues"
@@ -19,7 +20,9 @@
   "homepage": "https://github.com/gh0stl1m/platzily#readme",
   "dependencies": {
     "@platzily/links-module": "^1.0.0",
-    "fastify": "^3.14.0"
+    "fastify": "^3.14.0",
+    "fastify-autoload": "^3.6.0",
+    "fastify-plugin": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
