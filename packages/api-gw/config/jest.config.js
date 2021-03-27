@@ -6,6 +6,7 @@ module.exports = {
     '!src/utils/logger.js',
     '!src/utils/BusinessError.js',
     '!src/utils/index.js',
+    '!src/utils/test.js'
   ],
   coverageThreshold: {
     global: {
