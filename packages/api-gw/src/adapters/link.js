@@ -5,7 +5,7 @@ async function createShortUrl(req, reply) {
   const hostnameUrl = `${req.protocol}://${req.hostname}`;
   const shortUrL = await this.linkAdapter.createShortUrl(url, hostnameUrl);
 
-  reply.code(201)
+  return reply.code(201)
     .headers('Content-Type', 'application/json; charset=utf-8')
     .send({ data: shortUrL });
 }
