@@ -1,17 +1,26 @@
 const Mongoose = require('mongoose');
 
 const config = require('../config/database');
+const { supportedEnvs } = require('./utils/constants');
 const logger = require('./utils/logger');
 
 Mongoose.Promise = global.Promise;
 
-const db = Mongoose.createConnection(config.mongodb.uri, {
-  useNewUrlParser: true,
-  auth: {
-    user: config.mongodb.user,
-    password: config.mongodb.pass,
-  },
-});
+function createDb() {
+  if (process.env.NODE_ENV === supportedEnvs.TEST) {
+    return Mongoose.createConnection(global.__MONGO_URI__)
+  }
+
+  return Mongoose.createConnection(config.mongodb.uri, {
+    useNewUrlParser: true,
+    auth: {
+      user: config.mongodb.user,
+      password: config.mongodb.pass,
+    },
+  });
+}
+
+const db = createDb()
 
 db.on('error', (err) => {
   logger.error(`[pl-mongodbconnection-module]: Connection error event: ${err.message}`);
