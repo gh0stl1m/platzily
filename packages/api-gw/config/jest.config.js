@@ -1,4 +1,6 @@
 module.exports = {
+  preset: '@shelf/jest-mongodb',
+  rootDir: '../',
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/index.js',
@@ -15,9 +17,8 @@ module.exports = {
       statements: 70,
     },
   },
-  testEnvironment: 'node',
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.js?(x)',
-    '<rootDir>/src/**/?(*.)(spec|test).js?(x)',
+    '<rootDir>/src/**/**/?(*.)(spec|test|integration).js?(x)',
   ],
 }
