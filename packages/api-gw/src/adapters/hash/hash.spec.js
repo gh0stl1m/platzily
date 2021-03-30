@@ -1,34 +1,8 @@
 const Faker = require('faker');
-const linkAdapters = require('./link');
-const { createReqStub, createReplyStub } = require('../utils/testUtils');
+const hashAdapters = require('./hash');
+const { createReqStub, createReplyStub } = require('../../utils/testUtils');
 
-describe('Link Adapters' , () => {
-  describe('createShortUrl' , () => {
-    it('Given an url in the body, when a short link is created then the function must be return it', async () => {
-      // Arrange
-      const reqStubs = createReqStub({
-        body: {
-          url: Faker.internet.url(),
-        }
-      });
-      const replyStubs = createReplyStub();
-      const linkAdapterStub = {
-        createShortUrl: jest.fn(),
-      }
-
-      // Act
-      const createShortUrBinded = linkAdapters.createShortUrl
-        .bind({ linkAdapter: linkAdapterStub });
-      await createShortUrBinded(reqStubs, replyStubs);
-
-      // Asserts
-      expect(reqStubs.log.info).toHaveBeenCalled();
-      expect(replyStubs.code).toHaveBeenCalledWith(201);
-      expect((replyStubs.code()).headers).toHaveBeenCalled();
-      expect(((replyStubs.code()).headers()).send).toHaveBeenCalled();
-    });
-  });
-
+describe('Hash Adapters' , () => {
   describe('redirectToUrl', () => {
     it('Given a valid hash the function must redirect to the resulting url', async () => {
       // Arrange
@@ -43,7 +17,7 @@ describe('Link Adapters' , () => {
       }
 
       // Act
-      const readUrlByHashBinded = linkAdapters.redirectToUrl
+      const readUrlByHashBinded = hashAdapters.redirectToUrl
         .bind({ linkAdapter: linkAdapterStub });
       await readUrlByHashBinded(reqStubs, replyStubs);
 
@@ -65,7 +39,7 @@ describe('Link Adapters' , () => {
       }
 
       // Act
-      const readUrlByHashBinded = linkAdapters.redirectToUrl
+      const readUrlByHashBinded = hashAdapters.redirectToUrl
         .bind({ linkAdapter: linkAdapterStub });
       await readUrlByHashBinded(reqStubs, replyStubs);
 
