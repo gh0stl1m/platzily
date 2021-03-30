@@ -42,10 +42,10 @@ describe('/link', () => {
     });
 
     // Asserts
-    expect(response.statusCode).toEqual(500);
-    expect(response.json().statusCode).toEqual(500);
-    expect(response.json().error).toEqual('Internal Server Error');
-    expect(response.json().message).toEqual('URL_NOT_VALID');
+    expect(response.statusCode).toEqual(400);
+    expect(response.json().statusCode).toEqual(400);
+    expect(response.json().error).toEqual('Bad request');
+    expect(response.json().message).toEqual('URL field is required');
   });
 });
 
