@@ -1,7 +1,6 @@
 const Mongoose = require('mongoose');
 
 const config = require('../config/database');
-const { supportedEnvs } = require('./utils/constants');
 const logger = require('./utils/logger');
 
 Mongoose.Promise = global.Promise;
