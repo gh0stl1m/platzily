@@ -1,5 +1,4 @@
 module.exports = {
-  preset: '@shelf/jest-mongodb',
   rootDir: '../',
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
