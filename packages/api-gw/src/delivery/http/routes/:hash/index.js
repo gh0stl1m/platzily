@@ -1,7 +1,7 @@
-const { hash } = require('../../../../adapters');
+const { link } = require('../../../../adapters');
 
 async function hashRouter(fastify) {
-  fastify.get('/', hash.redirectToUrl);
+  fastify.get('/', link.redirectToUrl);
 }
 
 module.exports = hashRouter;
