@@ -5,7 +5,7 @@
   "keywords": [],
   "author": "Santiago Sanchez Taborda <santiago.sanchez.t@gmail.com>",
   "license": "ISC",
-  "main": "src/main",
+  "main": "src/index.js",
   "directories": {
     "src": "src"
   },
