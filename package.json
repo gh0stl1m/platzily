@@ -3,6 +3,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "start:server": "yarn workspace @platzily/api-gw start"
+  },
   "private": true,
   "devDependencies": {
     "jest": "^26.6.3",
