@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node src/index.js",
     "start:dev": "nodemon src/index.js",
-    "test": "jest --watch-all",
+    "test": "jest --config ./config/jest.config.js --watch-all",
     "coverage": "jest --coverage",
     "inspect": "node --inspect src/index.js"
   },
