@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  api-gw:
+    build:
+      context: .
+      dockerfile: ./packages/api-gw/Dockerfile
+    depends_on:
+      - mongo-db
+    ports:
+      - "3000:3000"
+    container_name: api-gw
+    restart: on-failure
+    links:
+      - mongo-db
+    networks:
+      - platzily-network
+    volumes:
+      - ".env:/src/.env"
+    
+  mongo-db:
+    image: mongo
+    container_name: mongo_db
+    restart: unless-stopped
+    command: [--auth]
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_ADMIN_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_ADMIN_PASS}
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    networks:
+      - platzily-network
+
+networks:
+  platzily-network:
+    driver: bridge
